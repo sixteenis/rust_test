@@ -1,0 +1,8 @@
+/target
+/output
+**/*.rs.bk
+*.pdb
+.DS_Store
+input_log.txt
+*.dmg
+.cargo/config.toml

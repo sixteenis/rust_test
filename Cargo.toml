@@ -1,0 +1,31 @@
+[package]
+name = "rust_test"
+version = "0.1.0"
+edition = "2021"
+description = "키보드 및 마우스 입력 추적기"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+
+[dependencies]
+chrono = "0.4"
+eframe = "0.29"
+device_query = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+# cargo-bundle 메타데이터 (macOS/Windows/Linux 패키징용)
+[package.metadata.bundle]
+name = "Input Tracker"
+identifier = "com.yourname.inputtracker"
+version = "0.1.0"
+copyright = "Copyright (c) 2026 Your Name"
+category = "Utility"
+short_description = "키보드/마우스 입력 추적기"
+long_description = """
+키보드와 마우스 입력을 실시간으로 감지하고 통계를 표시하는 데스크톱 앱입니다.
+"""
+osx_minimum_system_version = "10.13"
