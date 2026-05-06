@@ -2,14 +2,21 @@
 name = "rust_test"
 version = "0.1.0"
 edition = "2021"
-description = "키보드 및 마우스 입력 추적기"
-authors = ["Your Name <you@example.com>"]
-license = "MIT"
+description = "핀플 PC 근무활동 감지 에이전트"
+authors = ["PinPle"]
 
 [dependencies]
-chrono = "0.4"
+chrono = { version = "0.4", features = ["serde"] }
 eframe = "0.29"
 device_query = "2"
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+directories = "5"
+ureq = { version = "2", features = ["json"] }
+log = "0.4"
+env_logger = "0.11"
 
 [profile.release]
 opt-level = 3
@@ -17,15 +24,15 @@ lto = true
 codegen-units = 1
 strip = true
 
-# cargo-bundle 메타데이터 (macOS/Windows/Linux 패키징용)
 [package.metadata.bundle]
-name = "Input Tracker"
-identifier = "com.yourname.inputtracker"
+name = "PinPle PC Agent"
+identifier = "com.pinple.pcagent"
 version = "0.1.0"
-copyright = "Copyright (c) 2026 Your Name"
+copyright = "Copyright (c) 2026 PinPle"
 category = "Utility"
-short_description = "키보드/마우스 입력 추적기"
+short_description = "PinPle PC 근무활동 감지 에이전트"
 long_description = """
-키보드와 마우스 입력을 실시간으로 감지하고 통계를 표시하는 데스크톱 앱입니다.
+PC 사용시간과 미사용 시간을 자동 기록하여 근무시간 증빙을 보완합니다.
+키보드/마우스 입력 내용은 절대 저장하지 않으며, 입력 발생 여부와 미사용 시간만 기록합니다.
 """
 osx_minimum_system_version = "10.13"
